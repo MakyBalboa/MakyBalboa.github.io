@@ -1,4 +1,3 @@
-
 body{
     margin: 0%;
 }
@@ -6,7 +5,6 @@ body{
 section{
     margin-top: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 50px;
@@ -16,16 +14,15 @@ section{
 .Gallery-Item{
     color:gray;
     font-size: 30px;
+    max-width: 1000px;
 }
 
 .Gallery-Item > p{
-    width: 500px;
+    width: auto;
     height: auto;
 }
 
 .Scroll-Frame{
-    width: 1100px;
-    height: auto;
     display: grid;
     gap: 200px;
     overflow-x: hidden;
@@ -43,10 +40,22 @@ section{
 
 .Scroll-Frame > img{
     scroll-snap-align: center;
-    background-color: red;
     -webkit-user-drag: none;
     user-select: none;
+    object-fit: cover;
 }
+
+
+@media only screen and (max-width: 800px) {
+    .Scroll-Frame > img{
+        max-width: 800px;
+    }
+
+    .Gallery-Item > p{
+        text-align: center;
+    }
+}
+
 
 .Scroll-Frame > img:first-child{
     margin-left: 500px;
