@@ -57,7 +57,7 @@ header{
 
 #Navigation{
     margin-left: 75%;
-    width: 200px;
+    max-width: 200px;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -90,7 +90,7 @@ header{
 
 #home-page-link{
     margin-left: 0%;
-    width: 300px;
+    max-width: 300px;
     font-size: 30px;
     color:antiquewhite;
 }

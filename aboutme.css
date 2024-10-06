@@ -1,6 +1,7 @@
 
 body{
     margin: 0;
+    overflow-x: hidden;
 }
 
 #Main-Content{
@@ -15,15 +16,14 @@ body{
     display: flex;
     justify-content: center;
     gap:75px;
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-right: 15px;
 }
 
 #Face{
     background-image: url(Images/MakyWeb/AboutMe/MakyFace.jpg);
     min-width: 400px;
-    width: 50vh;
-    height: 50vh;
+    width: 45vh;
+    height: 45vh;
     background-size: cover;
     border-radius: 50%;
 }
@@ -35,7 +35,6 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     line-height: 25px;
     color: gray;
-    margin-left: 15px;
     margin-right: 15px;
 }
 
@@ -71,5 +70,9 @@ body{
 
     .ImageBlock{
         width: 100%;
+    }
+
+    #FaceQuote{
+        margin-left: 15px;
     }
 }
