@@ -31,7 +31,7 @@ body{
 #FaceQuote{
     width: auto;
     max-width: 600px;
-    font-size: 17px;
+    font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 25px;
     color: gray;

@@ -6,13 +6,13 @@ header{
 #quote{
     font-size: 50px;
     text-align: left;
-    width: 600px;
+    max-width: 600px;
     font-weight:500;
 }
 
 #home-page-link{
     margin-left: 0%;
-    width: 300px;
+    max-width: 300px;
     line-height: 12vh;
     font-size: 30px;
     color:antiquewhite;
@@ -36,6 +36,8 @@ section div:first-child{
 section div:last-child{
     margin-top: 25px;
     margin-bottom: 40px;
+    width: auto;
+    height: auto;
 }
 
 img{
