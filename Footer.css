@@ -27,7 +27,7 @@ footer>div:last-child{
 }
 
 #LeftFoot{
-    width: 500px;
+    max-width: 500px;
 }
 
 #LeftFoot>p{

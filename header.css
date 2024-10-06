@@ -98,6 +98,7 @@ header{
 @media only screen and (max-width: 800px) {
     #top{
         flex-direction: column;
+        margin-top: 25px;
     }
     #Navigation{
         margin-left: auto;

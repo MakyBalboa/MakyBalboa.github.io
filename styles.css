@@ -1,21 +1,13 @@
 
 header{
-    height: 650px;
+    height: 70vh;
 }
 
 #quote{
-    font-size: 50px;
+    font-size: 3rem;
     text-align: left;
     max-width: 600px;
     font-weight:500;
-}
-
-#home-page-link{
-    margin-left: 0%;
-    max-width: 300px;
-    line-height: 12vh;
-    font-size: 30px;
-    color:antiquewhite;
 }
 
 section div{
@@ -29,7 +21,7 @@ section div{
 section div:first-child{
     margin-top: 25px;
     margin-bottom: 25px;
-    font-size: 45px;
+    font-size: 2rem;
     height: auto;
 }
 
@@ -38,6 +30,7 @@ section div:last-child{
     margin-bottom: 40px;
     width: auto;
     height: auto;
+    word-wrap: break-word;
 }
 
 img{
