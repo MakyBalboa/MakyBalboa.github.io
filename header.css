@@ -1,0 +1,95 @@
+
+header{
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(Images/MakyWeb/download.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#Header-Center{
+    width: 1170px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#top{
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+#quote{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    max-width: 100%;
+    font-style: italic;
+    font-size: 60px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+#Nav-Button{
+    margin-left: auto;
+    height: 50%;
+    background-color:rgba(141, 105, 38, 0); 
+    border: 0px;
+    font-size: 25px;
+    color: antiquewhite;
+}
+
+#Navigation-Screen{
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    position:fixed;
+    background-color: black;
+    opacity: 75%;
+    display: none;
+}
+
+#Navigation{
+    margin-left: 75%;
+    width: 200px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    font-size: 35px;
+    gap: 20px;
+    text-decoration: none;
+}
+
+#Navigation a:link{
+    color: white;
+    text-decoration: none;
+}
+
+#Navigation a:visited{
+    color: white;
+}
+
+#Navigation a:hover{
+    color: gray;
+}
+
+#Navigation button{
+    border: 0px;
+    background-color: rgba(141, 105, 38, 0);
+    font-size: 25px;
+    margin-top: 15px;
+    text-align: left;
+    color: white;
+}
+
+#home-page-link{
+    margin-left: 0%;
+    width: 300px;
+    line-height: 12vh;
+    font-size: 30px;
+    color:antiquewhite;
+}
