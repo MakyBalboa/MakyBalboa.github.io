@@ -48,7 +48,7 @@ section{
 
 @media only screen and (max-width: 800px) {
     .Scroll-Frame > img{
-        max-width: 800px;
+        max-width: 100vw;
     }
 
     .Gallery-Item > p{

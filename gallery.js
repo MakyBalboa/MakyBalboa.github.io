@@ -30,6 +30,22 @@ for(let i = 0; i < ScrollFrames.length; i++){
         IsDragging = false
         ScrollFrames[i].classList.remove("Dragging")
     })
-        
+    
+    ScrollFrames[i].addEventListener("touchstart", function(e){
+        IsDragging = true
+        mouseX = e.touches[0].clientX
+        ScrollFrames[i].classList.add("Dragging")
+    })
+
+    ScrollFrames[i].addEventListener("touchend", function(e){
+        IsDragging = false
+        ScrollFrames[i].classList.remove("Dragging")
+    })
+
+    ScrollFrames[i].addEventListener("touchmove", function(e){
+        if(!IsDragging) return;
+        ScrollFrames[i].scrollLeft += mouseX - e.touches[0].clientX
+        mouseX = e.touches[0].clientX
+    })
 
 }
