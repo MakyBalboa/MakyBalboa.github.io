@@ -20,9 +20,10 @@ body{
 
 #Face{
     background-image: url(Images/MakyWeb/AboutMe/MakyFace.jpg);
-    min-width: 400px;
-    width: 45vh;
-    height: 45vh;
+    max-width: 500px;
+    max-height: 500px;
+    width: 100%;
+    height: 100vw;
     background-size: cover;
     border-radius: 50%;
 }

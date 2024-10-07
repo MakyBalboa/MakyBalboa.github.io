@@ -66,7 +66,7 @@ p{
     }
 
     #ArtImages{
-        grid-template-columns: 200px 200px;
+        grid-template-columns: 42vw 42vw;
         grid-template-rows: 125px 175px 250px;
         row-gap: 20px;
         column-gap: 20px;
