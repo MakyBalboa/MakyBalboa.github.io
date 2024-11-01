@@ -57,18 +57,18 @@ for(let i = 0; i < ScrollFrames.length; i++){
         IsDragging = false
         ScrollFrames[i].classList.remove("Dragging")
 
-        console.log(startScrollLeft)
+        console.log(startX + " " + e.touches[0].pageX)
 
         if(startScrollLeft != ScrollFrames[i].scrollLeft){
             startX = 0
             return
         }
 
-        if((startX - e.touches[0].pageX) > 100){
-            ScrollFrames[i].scrollLeft += 500
+        if((startX - e.touches[0].pageX) > 40){
+            ScrollFrames[i].scrollLeft += 600
         }
-        if((startX - e.touches[0].pageX) < -100){
-            ScrollFrames[i].scrollLeft -= 500
+        if((startX - e.touches[0].pageX) < -40){
+            ScrollFrames[i].scrollLeft -= 600
         }
 
         startX = 0
