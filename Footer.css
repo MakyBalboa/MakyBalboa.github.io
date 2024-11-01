@@ -65,6 +65,10 @@ p{
         flex-direction: column;
     }
 
+    #LeftFoot{
+        font-size: 1.25rem;
+    }
+
     #ArtImages{
         grid-template-columns: 42vw 42vw;
         grid-template-rows: 125px 175px 250px;
