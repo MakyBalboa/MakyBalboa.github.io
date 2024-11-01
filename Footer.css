@@ -6,13 +6,12 @@ footer{
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
+    align-items: center;
 }
 
 footer>div{
     margin-top: 50px;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 100%;
 }
 
@@ -28,6 +27,7 @@ footer>div:last-child{
 
 #LeftFoot{
     max-width: 500px;
+    margin-right: auto;
 }
 
 #LeftFoot>p{
@@ -58,6 +58,26 @@ p{
     width: 100%;
     height: 100%;
     background-size: cover;
+    background-position: center;
+}
+
+#ArtImages p:nth-child(1){
+    background-image: url(Images/Footer/FooterImage1.jpg);
+}
+#ArtImages p:nth-child(2){
+    background-image: url(Images/Footer/FooterImage2.jpg);
+}
+#ArtImages p:nth-child(3){
+    background-image: url(Images/Footer/FooterImage3.jpg);
+}
+#ArtImages p:nth-child(4){
+    background-image: url(Images/Footer/FooterImage4.jpg);
+}
+#ArtImages p:nth-child(5){
+    background-image: url(Images/Footer/FooterImage5.jpg);
+}
+#ArtImages p:nth-child(6){
+    background-image: url(Images/Footer/FooterImage6.jpg);
 }
 
 @media only screen and (max-width: 800px) {

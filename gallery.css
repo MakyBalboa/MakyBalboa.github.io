@@ -30,7 +30,7 @@ section{
     grid-auto-flow: column;
     background-size: cover;
     user-select: none;
-    scroll-behavior: smooth;
+    /*scroll-behavior: smooth;*/
 }
 
 .Dragging{
