@@ -13,6 +13,7 @@ footer>div{
     margin-top: 50px;
     display: flex;
     height: 100%;
+    gap: 20vw;
 }
 
 footer>div:last-child{
@@ -44,6 +45,22 @@ footer>div:last-child{
 
 #RightFoot{
     margin-left: auto;
+}
+
+#viberIcon{
+    background-image: url(Images/Footer/viberIcon.png);
+    width: 45px;
+    height: 45px;
+}
+
+.Horizontal{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.Horizontal>p{
+    margin: 0%;
 }
 
 #ArtImages{

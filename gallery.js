@@ -8,6 +8,11 @@ let mouseY = 0
 let startX = 0
 let startScrollLeft = 0
 
+let lastTouchPosition = 0
+
+let desktopXThreshold = 100
+let mobileXThreshold = 60
+
 for(let i = 0; i < ScrollFrames.length; i++){
 
     //console.log(i)
@@ -57,17 +62,10 @@ for(let i = 0; i < ScrollFrames.length; i++){
         IsDragging = false
         ScrollFrames[i].classList.remove("Dragging")
 
-        console.log(startX + " " + e.touches[0].pageX)
-
-        if(startScrollLeft != ScrollFrames[i].scrollLeft){
-            startX = 0
-            return
-        }
-
-        if((startX - e.touches[0].pageX) > 40){
+        if((startX - mouseX) > mobileXThreshold){
             ScrollFrames[i].scrollLeft += 600
         }
-        if((startX - e.touches[0].pageX) < -40){
+        if((startX - mouseX) < -mobileXThreshold){
             ScrollFrames[i].scrollLeft -= 600
         }
 
@@ -88,10 +86,10 @@ function ValidateFramePosition(frame, event){
         return
     }
 
-    if((startX - event.pageX) > 100){
-        frame.scrollLeft += 500
+    if((startX - event.pageX) > desktopXThreshold){
+        frame.scrollLeft += 600
     }
-    if((startX - event.pageX) < -100){
-        frame.scrollLeft -= 500
+    if((startX - event.pageX) < -desktopXThreshold){
+        frame.scrollLeft -= 600
     }
 }
