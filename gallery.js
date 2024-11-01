@@ -30,6 +30,7 @@ for(let i = 0; i < ScrollFrames.length; i++){
         IsDragging = false
         ScrollFrames[i].classList.remove("Dragging")
 
+        console.log(startX - e.pageX)
         ValidateFramePosition(ScrollFrames[i], e)
 
         startX = 0
@@ -46,8 +47,8 @@ for(let i = 0; i < ScrollFrames.length; i++){
     
     ScrollFrames[i].addEventListener("touchstart", function(e){
         IsDragging = true
-        mouseX = e.touches[0].clientX
-        startX = e.touches[0].clientX
+        mouseX = e.touches[0].pageX
+        startX = e.touches[0].pageX
         startScrollLeft = ScrollFrames[i].scrollLeft
         ScrollFrames[i].classList.add("Dragging")
     })
@@ -63,10 +64,10 @@ for(let i = 0; i < ScrollFrames.length; i++){
             return
         }
 
-        if((startX - e.touches[0].clientX) > 100){
+        if((startX - e.touches[0].pageX) > 100){
             ScrollFrames[i].scrollLeft += 500
         }
-        if((startX - e.touches[0].clientX) < -100){
+        if((startX - e.touches[0].pageX) < -100){
             ScrollFrames[i].scrollLeft -= 500
         }
 
@@ -75,8 +76,8 @@ for(let i = 0; i < ScrollFrames.length; i++){
 
     ScrollFrames[i].addEventListener("touchmove", function(e){
         if(!IsDragging) return;
-        ScrollFrames[i].scrollLeft += mouseX - e.touches[0].clientX
-        mouseX = e.touches[0].clientX
+        ScrollFrames[i].scrollLeft += mouseX - e.touches[0].pageX
+        mouseX = e.touches[0].pageX
     })
 
 }
