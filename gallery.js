@@ -1,95 +1,188 @@
+const carousels = document.querySelectorAll(".carousel");
 
-let ScrollFrames = document.getElementsByClassName("Scroll-Frame")
-let IsDragging = false
+carousels.forEach(carousel => {
 
-let mouseX = 0
-let mouseY = 0
+    const track = carousel.querySelector(".carousel-track");
+    const slides = carousel.querySelectorAll(".slide");
 
-let startX = 0
-let startScrollLeft = 0
+    let currentIndex = 0;
 
-let lastTouchPosition = 0
+    let isDragging = false;
 
-let desktopXThreshold = 100
-let mobileXThreshold = 60
+    let startX = 0;
+    let dragDistance = 0;
 
-for(let i = 0; i < ScrollFrames.length; i++){
+    track.style.transition = "none";
+    track.style.transform = "translateX(0px)";
 
-    //console.log(i)
-    
-    ScrollFrames[i].addEventListener("mousemove", function(e){
-        if(!IsDragging) return;
-        ScrollFrames[i].scrollLeft += mouseX - e.pageX
-        mouseX = e.pageX
-    })
+    const dots = document.createElement("div");
+    dots.classList.add("carousel-dots");
 
-    ScrollFrames[i].addEventListener("mousedown", function(e){
-        IsDragging = true
-        mouseX = e.pageX
-        startX = e.pageX
-        startScrollLeft = ScrollFrames[i].scrollLeft
-        ScrollFrames[i].classList.add("Dragging")
-    })
+    slides.forEach((slide, index) => {
 
-    ScrollFrames[i].addEventListener("mouseup", function(e){
-        IsDragging = false
-        ScrollFrames[i].classList.remove("Dragging")
+	const dot = document.createElement("button");
 
-        console.log(startX - e.pageX)
-        ValidateFramePosition(ScrollFrames[i], e)
+	dot.classList.add("carousel-dot");
 
-        startX = 0
-    })
+	if (index === 0) {
+	    dot.classList.add("active");
+	}
 
-    ScrollFrames[i].addEventListener("mouseleave", function(e){
-        IsDragging = false
-        ScrollFrames[i].classList.remove("Dragging")
+	dot.addEventListener("click", () => {
+	    currentIndex = index;
+	    moveToSlide(currentIndex);
 
-        ValidateFramePosition(ScrollFrames[i], e)
+	    updateDots();
+	});
 
-        startX = 0
-    })
-    
-    ScrollFrames[i].addEventListener("touchstart", function(e){
-        IsDragging = true
-        mouseX = e.touches[0].pageX
-        startX = e.touches[0].pageX
-        startScrollLeft = ScrollFrames[i].scrollLeft
-        ScrollFrames[i].classList.add("Dragging")
-    })
+	dots.appendChild(dot);
+    });
 
-    ScrollFrames[i].addEventListener("touchend", function(e){
-        IsDragging = false
-        ScrollFrames[i].classList.remove("Dragging")
+    carousel.after(dots);
 
-        if((startX - mouseX) > mobileXThreshold){
-            ScrollFrames[i].scrollLeft += 600
+    function updateDots() {
+
+	const allDots =
+	    dots.querySelectorAll(".carousel-dot");
+
+	allDots.forEach((dot, index) => {
+	    dot.classList.toggle(
+		"active",
+		index === currentIndex
+	    );
+	});
+    }
+
+    function moveToSlide(index, smooth = true) {
+
+	const slide = slides[index];
+
+	const slideCenter =
+	    slide.offsetLeft + slide.offsetWidth / 2;
+
+	const carouselCenter =
+	    carousel.offsetWidth / 2;
+
+	const position =
+	    carouselCenter - slideCenter;
+
+	track.style.transition = smooth
+	    ? "transform 0.4s ease"
+	    : "none";
+
+	track.style.transform =
+	    `translateX(${position}px)`;
+
+	updateDots();
+    }
+
+
+    carousel.addEventListener("pointerdown", e => {
+
+	isDragging = true;
+
+	startX = e.clientX;
+
+	const slide = slides[currentIndex];
+
+	const slideCenter =
+	    slide.offsetLeft + slide.offsetWidth / 2;
+
+	const carouselCenter =
+	    carousel.offsetWidth / 2;
+
+	startPosition =
+	    carouselCenter - slideCenter;
+
+	track.style.transition = "none";
+
+	carousel.classList.add("dragging");
+
+	carousel.setPointerCapture(e.pointerId);
+    });
+
+
+    carousel.addEventListener("pointermove", e => {
+
+	if (!isDragging) return;
+
+	dragDistance = e.clientX - startX;
+
+	let position =
+	    startPosition + dragDistance;
+
+
+	// At the first slide
+	if (currentIndex === 0 && dragDistance > 0) {
+	    position =
+		startPosition + dragDistance * 0.10;
+	}
+
+
+	// At the last slide
+	if (
+	    currentIndex === slides.length - 1 &&
+	    dragDistance < 0
+	) {
+	    position =
+		startPosition + dragDistance * 0.10;
+	}
+
+
+	track.style.transform =
+	    `translateX(${position}px)`;
+    });
+
+
+    carousel.addEventListener("pointerup", e => {
+
+        if (!isDragging) return;
+
+        isDragging = false;
+
+        carousel.classList.remove("dragging");
+
+        const threshold = 100;
+
+
+        if (
+            dragDistance < -threshold &&
+            currentIndex < slides.length - 1
+        ) {
+            currentIndex++;
         }
-        if((startX - mouseX) < -mobileXThreshold){
-            ScrollFrames[i].scrollLeft -= 600
+
+        else if (
+            dragDistance > threshold &&
+            currentIndex > 0
+        ) {
+            currentIndex--;
         }
 
-        startX = 0
-    })
 
-    ScrollFrames[i].addEventListener("touchmove", function(e){
-        if(!IsDragging) return;
-        ScrollFrames[i].scrollLeft += mouseX - e.touches[0].pageX
-        mouseX = e.touches[0].pageX
-    })
+        moveToSlide(currentIndex);
 
-}
 
-function ValidateFramePosition(frame, event){
-    if(startScrollLeft != frame.scrollLeft){
-        startX = 0
-        return
-    }
+        dragDistance = 0;
+    });
 
-    if((startX - event.pageX) > desktopXThreshold){
-        frame.scrollLeft += 600
-    }
-    if((startX - event.pageX) < -desktopXThreshold){
-        frame.scrollLeft -= 600
-    }
-}
+
+    carousel.addEventListener("pointercancel", () => {
+
+        if (!isDragging) return;
+
+        isDragging = false;
+
+        carousel.classList.remove("dragging");
+
+        moveToSlide(currentIndex);
+
+        dragDistance = 0;
+    });
+
+    moveToSlide(currentIndex, false);
+    carousel.classList.add("ready");
+
+});
+
+
