@@ -41,7 +41,6 @@ section{
     width: auto;
     height: auto;
     font-size: 1.5rem;
-    margin-bottom: 100px;
 }
 
 .Dragging{
@@ -55,6 +54,7 @@ section{
     overflow: hidden;
     cursor: grab;
     visibility: hidden;
+    touch-action: pan-y;
 }
 
 .carousel.ready {
