@@ -11,7 +11,7 @@ const items={
 		]
 	},
 	"capricorn": {
-		title: "Capricorn",
+		title: "Horn",
 		style: "Acrylic on canvas",
 		size: "80x100 cm",
 		images: [
@@ -30,7 +30,7 @@ const items={
 		]
 	},
 	"flower": {
-		title: "Flower",
+		title: "Garden",
 		style: "Acrylic on canvas",
 		size: "90x70 cm",
 		images: [
