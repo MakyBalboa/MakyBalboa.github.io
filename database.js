@@ -2,7 +2,7 @@
 const items={
 	"wheel-of-time": {
 		title: "Wheel of time",
-		style: "Acrylic on canvas with texture\nMixed media",
+		style: "Acrylic on canvas with texture, Mixed media",
 		size: "160x80 cm",
 		images: [
 		    "Images/Gallery/wheel of time 1.jpg",
@@ -175,7 +175,7 @@ const items={
 	"plane": {
 		title: "A Plane",
 		style: "Acrylic on canvas",
-		size: "80x120 cm",
+		size: "120x80 cm",
 		images: [
 		    "Images/Gallery/a plane 1.jpg",
 		    "Images/Gallery/a plane 2.jpg",
