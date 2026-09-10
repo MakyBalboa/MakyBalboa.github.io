@@ -18,6 +18,32 @@ carousels.forEach(carousel => {
     const dots = document.createElement("div");
     dots.classList.add("carousel-dots");
 
+    function resizeCarousel() {
+	const maxWidth = carousel.offsetWidth * 0.96;
+
+	let widestImage = 0;
+
+	slides.forEach(slide => {
+	    const img = slide.querySelector("img");
+
+	    const width =
+		img.naturalWidth / img.naturalHeight;
+
+	    if (width > widestImage) {
+		widestImage = width;
+	    }
+	});
+
+	const height = maxWidth / widestImage;
+
+	carousel.style.setProperty(
+	    "--carousel-height",
+	    `${height}px`
+	);
+
+	moveToSlide(currentIndex, false);
+    }
+
     slides.forEach((slide, index) => {
 
 	const dot = document.createElement("button");
@@ -178,6 +204,16 @@ carousels.forEach(carousel => {
         moveToSlide(currentIndex);
 
         dragDistance = 0;
+    });
+
+    slides.forEach(slide => {
+	const img = slide.querySelector("img");
+
+	if (img.complete) {
+	    resizeCarousel();
+	} else {
+	    img.addEventListener("load", resizeCarousel);
+	}
     });
 
     moveToSlide(currentIndex, false);
